@@ -1,0 +1,34 @@
+-- Criar a base de dados db_doacao
+CREATE DATABASE db_doacao;
+
+-- Usar a base de dados db_doacao
+USE db_doacao;
+
+-- Criar a tabela tb_inst
+CREATE TABLE tb_inst (
+    matricula INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100),
+    email VARCHAR(100),
+    telefone VARCHAR(20),
+    endereco VARCHAR(100),
+    alimento VARCHAR(50)
+);
+
+-- 
+
+USE db_doacao;
+
+-- Inserir 10 registros de doadores aleatórios
+INSERT INTO tb_inst (nome, email, telefone, endereco, curso, turma, ano)
+SELECT 
+    CONCAT('doador ', RAND()), 
+    CONCAT('doador', matricula, '@exemplo.com'), 
+    CONCAT('123456789', matricula),
+    CONCAT('Endereco ', matricula),
+    CONCAT('Alimento ', FLOOR(RAND() * 5) + 1),
+    FLOOR(RAND() * 4) + 2020
+FROM
+    (SELECT @row := @row + 1 AS matricula
+    FROM
+        (SELECT @row := 0) r,
+        (SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10) n) m;
