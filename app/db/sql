@@ -19,14 +19,13 @@ CREATE TABLE tb_inst (
 USE db_doacao;
 
 -- Inserir 10 registros de doadores aleatórios
-INSERT INTO tb_inst (nome, email, telefone, endereco, curso, turma, ano)
+INSERT INTO tb_inst (nome, email, telefone, endereco, alimento)
 SELECT 
     CONCAT('doador ', RAND()), 
     CONCAT('doador', matricula, '@exemplo.com'), 
     CONCAT('123456789', matricula),
     CONCAT('Endereco ', matricula),
-    CONCAT('Alimento ', FLOOR(RAND() * 5) + 1),
-    FLOOR(RAND() * 4) + 2020
+    CONCAT('Alimento ', FLOOR(RAND() * 5) + 1)
 FROM
     (SELECT @row := @row + 1 AS matricula
     FROM
