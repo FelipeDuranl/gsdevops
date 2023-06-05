@@ -1,16 +1,11 @@
 import json
 import mysql.connector
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 
 app = Flask(__name__)
 
-@app.route('/')
-def index():
-    return render_template('index.html')
-
 cors = CORS(app, resources={r"/cadastro": {"origins": "*"}})
-
 
 db_config = {
     'host': 'localhost',
@@ -19,13 +14,15 @@ db_config = {
     'database': 'db_doacao'
 }
 
+# Funções de manipulação de banco de dados
+
 def insert_doador(doador):
     conn = mysql.connector.connect(**db_config)
     cursor = conn.cursor()
 
     query = """
         INSERT INTO tb_inst
-        (doador_nome, doador_email, doador_telefone, doador_endereco, doador_alimento)
+        (nome, email, telefone, endereco, alimento)
         VALUES (%s, %s, %s, %s, %s, %s, %s)
     """
     values = (
@@ -66,6 +63,20 @@ def clear_table():
     cursor.close()
     conn.close()
 
+# Rotas
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/list')
+def list_doadores():
+    doadores = fetch_doadores()
+    return render_template('list.html', doadores=doadores)
+
+@app.route('/instituicao')
+def instituicao():
+    return render_template('instituicao.html')
+
 @app.route('/limpar', methods=['GET'])
 def limpar_tabela():
     clear_table()
@@ -73,7 +84,6 @@ def limpar_tabela():
 
 @app.route('/cadastro', methods=['POST'])
 def cadastro():
-    
     doador = request.get_json()
     print(request.form)
 
@@ -87,10 +97,5 @@ def get_doadores():
     return jsonify(doadores)
 
 
-@app.route('/')
-def index():
-    return 'Bem-vindo ao cadastro de doadores!'
-
 if __name__ == '__main__':
-    app.run(host="0.0.0.0",port=80)
-
+    app.run(host="0.0.0.0", port=80, debug=True)

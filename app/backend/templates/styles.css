@@ -1,0 +1,90 @@
+body {
+    background-color: #0077b6;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url('./download.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.container {
+    background-color: #032541;
+    padding: 2rem;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.container-doador {
+    background-color: rgba(255, 255, 255, 0.4);
+    padding: 2rem;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 500px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+label,
+input {
+    display: block;
+    width: 100%;
+}
+
+input {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 3px;
+    margin-top: 0.3rem;
+}
+
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 3px;
+    background-color: #0077b6;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #005ea8;
+}
+
+.container .option {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .option a {
+    color: #fff;
+    font-style: none;
+    text-decoration: none;
+    margin: 1rem;
+    padding: 1rem 3rem;
+    border: 1px solid #fff;
+}
+
+#cadastro-doador div label, .doador-h1{
+    color: #0077b6 !important;
+}
