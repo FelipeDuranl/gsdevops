@@ -38,7 +38,7 @@ form.addEventListener('submit', (event) => {
     }
 
     // Fazer uma solicitação AJAX para o servidor Flask
-    fetch('http://172.19.125.250/cadastro', {
+    fetch('http://35.171.23.83/cadastro', {
             method: 'POST',
             body: JSON.stringify(dados),
             headers: {
@@ -62,7 +62,7 @@ form.addEventListener('submit', (event) => {
 // Função para buscar as instituições cadastradas
 function buscarInstituicoes() {
     // Fazer uma solicitação AJAX para obter as instituições cadastradas
-    fetch('http://172.19.125.250/doadores')
+    fetch('http://35.171.23.83/doadores')
         .then(response => response.json()) // obter a resposta como JSON
         .then(data => {
             const listaInst = document.querySelector('.lista-inst');
