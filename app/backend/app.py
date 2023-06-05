@@ -5,13 +5,17 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 
+@app.route('/')
+def index():
+    return render_template('index.html')
+
 cors = CORS(app, resources={r"/cadastro": {"origins": "*"}})
 
 
 db_config = {
-    'host': 'gsdevopsdb.mysql.database.azure.com',
-    'user': 'duran',
-    'password': 'Fiap@123',
+    'host': 'localhost',
+    'user': 'root',
+    'password': 'Fiap@',
     'database': 'db_doacao'
 }
 
