@@ -8,9 +8,9 @@ app = Flask(__name__)
 cors = CORS(app, resources={r"/cadastro": {"origins": "*"}})
 
 db_config = {
-    'host': 'localhost',
-    'user': 'root',
-    'password': 'Fiap@',
+    'host': 'rds-db-notifier.cjffwhzhqqcy.us-east-1.rds.amazonaws.com',
+    'user': 'felcome',
+    'password': 'felcomido',
     'database': 'db_doacao'
 }
 
